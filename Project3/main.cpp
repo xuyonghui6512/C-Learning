@@ -38,9 +38,48 @@ public:
     }
 };
 
+enum RAM_Type{DDR2,DDr3,DDR4,DDR5};
+class RAM{
+private:
+    RAM_Type type;
+    int frenquency;
+    float voltage;
+public:
+    RAM(RAM_Type t,int f, float v) {
+        type=t;frenquency=f;voltage=v;
+    }
+    RAM(){}
+    ~RAM(){
+        cout<<"release a RAM"<<endl;
+    }
+    RAM_Type GetType() const {return type;}
+    int GetFrenquency() const { return frenquency;}
+    float  GetVoltage() const  { return voltage;}
+    void SetType(RAM_Type tt){
+        type=tt;
+    }
+    void SetFrenquency(int ff)
+    {frenquency=ff;}
+    void SetVoltage(float vv){
+        voltage=vv;
+    }
+
+    void Start(){
+        cout<<"is starting "<<endl;
+
+    }
+    void Stop(){
+        cout<<" is stopping"<<endl;
+    }
+
+
+};
+
 int main()
 {
     CPU a(P3,300,2.8);
     a.Run();
+    RAM b(DDR5,200,6.6);
+    b.Stop();
     return 0;
 }
