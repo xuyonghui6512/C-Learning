@@ -12,7 +12,7 @@ int Split(int A[],int left,int right)
     int pivot=A[right];
     int tail=left-1;
     for (int i = left; i <right ; ++i) {
-        if(A[i]<=pivot)
+        if(A[i]<=A[right])
             swap(A,++tail,i);
 
     }
@@ -23,18 +23,18 @@ void QuickSort(int A[],int left,int right)
 {
     if(left>=right)
         return;
-    int spilt_index=Split(A,left,right);
-    QuickSort(A,left,spilt_index-1);
-    QuickSort(A,spilt_index+1,right);
+    int split_index=Split(A,left,right);
+    QuickSort(A,left,split_index-1);
+    QuickSort(A,split_index+1,right);
 }
-
-int main() {
-    int A[]={2,5,4,6,7,9,3,1,8,11,243,32,3};
-    int n= sizeof(A)/ sizeof(int);
+int main()
+{
+    int A[]={2,3,4,1,7,8,6,5,9};
+    int n=sizeof(A)/ sizeof(int);
     QuickSort(A,0,n-1);
-    for (int i = 0; i <n ; ++i) {
+    for (int i = 0; i <n ; ++i)
+    {
         cout<<A[i]<<" ";
+
     }
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
 }
